@@ -1,0 +1,290 @@
+@import '../../node_modules/normalize.css/normalize.css';
+
+$theme-bg-dark: #191a1d;
+$theme-blue: #41EAD4;
+$theme-purple: #6E2594;
+$theme-orange: #D8A31A;
+$theme-green: #B3EFB2;
+$theme-grey: #E8F1F2;
+
+$terminal-bg-dark:   #282c34;
+$terminal-bg-light:  #fff;
+$terminal-pueple:    #d55fde;
+$terminal-red:       #f5657a;
+$terminal-orange1:   #d19a66;
+$terminal-orange2:   #e5c07b;
+$terminal-gray1:     #7F848E;
+$terminal-gray2:     #5C6370;
+$terminal-blue1:     #61AFEF;
+$terminal-blue2:     #2bbac5;
+$terminal-green:     #89ca78;
+
+/* quattrocento-sans-regular - latin */
+@font-face {
+  font-family: 'Quattrocento Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Quattrocento Sans'), local('QuattrocentoSans'),
+       url('../static/fonts/quattrocento-sans-v10-latin-regular.woff2') format('woff2'),
+       url('../static/fonts/quattrocento-sans-v10-latin-regular.woff') format('woff');
+}
+/* quattrocento-sans-700 - latin */
+@font-face {
+  font-family: 'Quattrocento Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Quattrocento Sans Bold'), local('QuattrocentoSans-Bold'),
+       url('../static/fonts/quattrocento-sans-v10-latin-700.woff2') format('woff2'),
+       url('../static/fonts/quattrocento-sans-v10-latin-700.woff') format('woff');
+}
+
+body {
+  font-family: 'Quattrocento Sans', Helvetica, sans-serif;
+  padding: 0.5em;
+  ul {
+    padding-left: 0;
+  }
+  #intro, #about, #skills, #work, footer {
+    position: relative;
+    border-radius: 0.25em;
+    h3 {
+      font-size: 2em;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+  }
+  #about {
+    margin-top: 0.5em;
+    padding: 50px 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $theme-bg-dark;
+    overflow: hidden;
+    background: $theme-orange;
+    a {
+      color: $theme-bg-dark;
+      border-bottom: 1px dotted;
+      text-decoration: none;
+    }
+    p {
+      width: 90%;
+      max-width: 800px;
+      font-size: 1.375em;
+      line-height: 1.5em;
+    }
+    .terminal {
+      width: 90%;
+      max-width: 800px;
+      border-top-right-radius: 0.3rem;
+      border-top-left-radius: 0.3rem;
+      box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-top: 30px;
+      &__header {
+        height: 37px;
+        padding: 0 1em;
+        position:relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: darken($terminal-bg-dark, 5%);
+        &-buttons {
+          width:10px;
+          height:10px;
+          background:Crimson;
+          border-radius:50%;
+          box-shadow:
+            15px 0 0 Orange,
+            30px 0 0 LimeGreen;
+        }
+        &-lang {
+          color: $theme-grey;
+        }
+      }
+      &__body {
+        position:relative;
+        display: flex;
+        background: $terminal-bg-dark;
+        &-input {
+          flex: 1;
+          text-align: left;
+          color: white;
+          padding: 1rem;
+          font-family: monospace;
+          font-size: 1.25em;
+          white-space: pre-wrap;
+          line-height: 1.5em;
+          word-wrap: break-word;
+          .attr {
+            color: $terminal-red;
+          }
+          .value {
+            &--text { color: $terminal-green; }
+            &--bool, &--num {
+              color: $terminal-orange1;
+            }
+          }
+        }
+      }
+    }
+  }
+  #skills {
+    margin-top: 0.5em;
+    padding: 50px 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $theme-grey;
+    color: $theme-bg-dark;
+    overflow: hidden;
+    .controls {
+      display: flex;
+      border: 1px dotted black;
+      padding: 1em;
+      border-radius: 0.5em;
+      margin-bottom: 1em;
+      .control {
+        display: flex;
+        align-items: bottom;
+        input[type="checkbox"] { display: none; }
+        input[type="checkbox"] + label {
+          display: flex;
+          align-items: baseline;
+          position: relative;
+          padding-left: 35px;
+          margin-bottom: 20px;
+          height: 22px;
+          cursor: pointer;
+        }
+        input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+        input[type="checkbox"] + label:before {
+          content: '';
+          display: block;
+          width: 20px;
+          height: 20px;
+          border: 1px solid;
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: .6;
+          transition: all .12s, border-color .08s;
+        }
+
+        input[type="checkbox"]:checked + label:before {
+          width: 10px;
+          top: -5px;
+          left: 5px;
+          border-radius: 0;
+          opacity: 1;
+          border-top-color: transparent;
+          border-left-color: transparent;
+          transform: rotate(45deg);
+        }
+      }
+      .control + .control { margin-left: 2em; }
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .chip {
+        margin: 1em 0.5em;
+        padding: 0.5em 1em;
+        border: 1px solid #444;
+        border-radius: 1em;
+        display: flex;
+        align-items: center;
+        img {
+          width: 24px;
+          height: 24px;
+          margin-right: 0.5em;
+        }
+        @keyframes in {
+          0% { transform: scale(0) rotate(12deg); opacity: 0; visibility: hidden;  }
+          100% { transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+        }
+        @keyframes out {
+          0% { transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+          100% { transform: scale(0) rotate(-12deg); opacity: 0; visibility: hidden;  }
+        }
+        &.show { animation: in 400ms ease both; }
+        &.hide { animation: out 200ms ease both; }
+        &.language { background: lighten($theme-orange, 40%); }
+        &.framework { background: lighten($theme-blue, 30%); }
+        &.tool { background: lighten($theme-purple, 50%); }
+      }
+    }
+  }
+  #work {
+    margin-top: 0.5em;
+    padding: 50px 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $theme-purple;
+    color: $theme-bg-dark;
+    overflow: hidden;
+    color: white;
+  }
+  footer {
+    margin-top: 0.5em;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $theme-bg-dark;
+    ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      li {
+        + li { margin-left: 20px; }
+        a {
+          svg {
+            width: 30px;
+            height: 30px;
+            fill: rgba(255,255,255,0.625);
+          }
+        }
+        a:hover svg {
+          fill: white;
+        }
+      }
+    }
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+  @media(max-width: 600px) {
+    #about p, #about .terminal {
+      width: 100%;
+    }
+    #skills {
+      .controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        .control {
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+      }
+      .chips {
+        .chip {
+          padding: 0.5em;
+          margin: 0.5em;
+          img {
+            width: 16px;
+            height: 16px;
+          }
+          span { font-size: 0.75em; }
+        }
+      }
+    }
+  }
+}

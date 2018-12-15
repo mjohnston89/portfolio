@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Mark Johnston</title>
+    <meta name="description" content="Web Developer, building engaging and responsive digital experiences.">
+    <style>
+      /* Hides content until css loaded */
+      body {
+        padding: 0.5em;
+        color: white;
+        font-family: sans-serif;
+      }
+      ul { padding-left: 0; }
+      #intro {
+        width: 100%;
+        height: calc(100vh - 1em);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        background: #191a1d;
+      }
+      #intro canvas {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+      #intro .intro__content, #intro nav { z-index: 1; }
+      #intro nav {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        right: 0;
+        padding: 1em 2em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #intro nav .brand-container {
+        width: 50px;
+        height: 50px;
+      }
+      #intro nav .brand-container .brand {
+        width: 50px;
+        height: auto;
+      }
+      #intro nav .brand-container .brand .brand__initials { fill: #fff; animation: colorFill 2s 1 forwards; }
+      #intro nav .brand-container .brand .brand__border { stroke: #fff; animation: colorStroke 2s ease-out 2s 1 forwards; }
+      @keyframes colorFill {
+        0% { fill: #fff; }
+        100% { fill: #41EAD4 };
+      }
+      @keyframes colorStroke {
+        0% { stroke: #fff; }
+        100% { stroke: #41EAD4 };
+      }
+      #intro nav ul {
+        list-style: none;
+        display: flex;
+      }
+      #intro nav ul li a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-bottom: 1px dotted;
+        font-weight: bold;
+      }
+      #intro nav ul li + li { margin-left: 2em; }
+      #intro .intro__content ul li a svg { fill: rgba(255,255,255,0.625); }
+      #intro .intro__content ul li a:hover svg { fill: white; }
+      #intro .intro__content h1 {
+        font-size: 5em;
+        margin: 0;
+        animation-delay: 0;
+        color: #fff;
+      }
+      #intro .intro__content h2 {
+        margin: 50px 0;
+        font-size: 3em;
+        text-transform: uppercase;
+        font-weight: 400;
+        animation-delay: 500ms;
+        color: #41EAD4;
+      }
+      #intro .intro__content h1, #intro .intro__content h2 {
+        text-align: center;
+        opacity: 0;
+        animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+      }
+      @keyframes reveal {
+        0% { opacity: 0; transform: translateY(100%); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      #intro .intro__content ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        animation: reveal 1s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;
+        animation-delay: 1s;
+      }
+      #intro .intro__content ul li + li {
+        margin-left: 20px;
+      }
+      #intro .intro__content ul li a svg {
+        width: 30px;
+        height: 30px;
+      }
+      @media(max-width: 600px) {
+        body #intro .intro__content h1 {
+          font-size: 3em;
+        }
+        body #intro .intro__content h2 {
+          font-size: 2em;
+        }
+      }
+    </style>
+    <link rel="preload" href="static/fonts/quattrocento-sans-v10-latin-regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="static/fonts/quattrocento-sans-v10-latin-700.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+    <link rel="manifest" href="/static/images/site.webmanifest">
+    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#41ead4">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Mark Johnston">
+    <meta name="application-name" content="Mark Johnston">
+    <meta name="msapplication-TileColor" content="#41ead4">
+    <meta name="msapplication-config" content="/static/images/browserconfig.xml">
+    <meta name="theme-color" content="#41ead4">
+  </head>
+  <body>
+    <section id="intro">
+      <nav>
+        <div class="brand-container">
+          <svg width="50px" height="50px" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="brand">
+            <path d="m265.4 412.14q4.4569 8.468 8.5795 17.605 4.1226 9.1366 7.911 18.719 3.7883-9.8051 8.0224-19.053 4.2341-9.248 8.6909-17.939l83.344-164.01q2.2284-4.234 4.5683-6.5739 2.3398-2.3399 5.2368-3.4541 2.8969-1.1142 6.5739-1.3371 3.6769-0.22285 8.5794-0.22285h57.494v324.68h-66.408v-186.74q0-13.593 1.3371-29.415l-86.018 166.91q-4.0112 7.7995-10.808 11.811-6.7968 4.0112-15.488 4.0112h-10.251q-8.6909 0-15.488-4.0112-6.7967-4.0112-10.808-11.811l-86.463-167.13q0.89137 7.7995 1.3371 15.488 0.44569 7.6881 0.44569 14.151v186.74h-66.407v-324.68h57.494q4.9026 0 8.5795 0.22285 3.6769 0.22284 6.5739 1.3371 2.897 1.1142 5.2368 3.4541 2.3399 2.3399 4.5683 6.5739l83.566 164.68zm435.21 30.752q0 27.187-6.7968 49.471-6.7968 22.284-20.502 38.218-13.705 15.933-34.429 24.736-20.725 8.8024-48.803 8.8024-12.702 0-25.07-1.3371-12.368-1.337-25.738-4.4568l4.0112-43.9q0.44565-5.7939 4.5682-9.3594 4.1227-3.5655 11.476-3.5655 3.7884 0 9.3594 1.2256 5.5711 1.2257 13.371 1.2257 10.919 0 19.053-3.0085 8.1339-3.0084 13.482-10.028 5.3482-7.0195 8.0223-18.385 2.6741-11.365 2.6741-28.078v-208.58h75.321v207.02z" style="z-index:999" class="brand__initials" />
+            <rect width="800" height="800" rx="0" fill="none" stroke="#000" stroke-width="10%" class="brand__border"/>
+          </svg>
+        </div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#work">Work</a></li>
+        </ul>
+      </nav>
+      <div class="intro__content">
+        <h1>Mark Johnston</h1>
+        <h2>Web Developer</h2>
+        <ul>
+          <li>
+            <a href="mailto:mjohnston89@gmail.com" rel="noopener" target="_blank" title="Gmail">
+              <svg width="24px" height="24px" role="img" alt="Gmail" title="Gmail" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/mjohnston89" rel="noopener" target="_blank" title="LinkedIn">
+              <svg role="img" alt="LinkedIn" title="LinkedIn" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section id="about">
+      <h3>About</h3>
+      <p>I am a web developer at <a href="https://idesigni.co.uk" rel="noopener" target="_blank">IDI</a>, where I build engaging and responsive digital experiences for the online education sector. I enjoy taking complex problems and crafting these into intuitive and polished applications.</p>
+      <p>I have developed products for partners including University of Aberdeen, University of Hertfordshire and Penguin Random House.</p>
+      <p>If you want to discuss a project or find out more about my work, get in touch!</p>
+      <div class="terminal">
+        <div class="terminal__header">
+          <div class="terminal__header-buttons"></div>
+          <span class="terminal__header-lang">JSON</span>
+        </div>
+        <div class="terminal__body">
+          <div class="terminal__body-input">{
+    <span class="attr">"location"</span>: <span class="value--text">"Edinburgh"</span>,
+    <span class="attr">"yearsOfExperience"</span>: <span class="value--num">7</span>,
+    <span class="attr">"employed"</span>: <span class="value--bool">true</span>,
+    <span class="attr">"education"</span>: {
+      <span class="attr">"degree"</span>: <span class="value--text">"Computer Science"</span>,
+      <span class="attr">"institution"</span>: <span class="value--text">"University of Edinburgh"</span>,
+    }
+  }
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills">
+      <h3>Skills</h3>
+      <form class="controls">
+        <div class="control">
+          <input type="checkbox" id="control-language" name="language" checked>
+          <label for="control-language">Languages</label>
+        </div>
+        <div class="control">
+          <input type="checkbox" id="control-framework" name="framework" checked>
+          <label for="control-framework">Frameworks</label>
+        </div>
+        <div class="control">
+          <input type="checkbox" id="control-tool" name="tool" checked>
+          <label for="control-tool">Tools & Other Skills</label>
+        </div>
+      </form>
+      <div class="chips">     
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/javascript.svg" alt="JS"><span>Javascript</span>
+        </div>
+        <div class="chip framework" data-type="framework" data-vis="true">
+          <img src="static/images/vue-dot-js.svg" alt="Vue.js"><span>Vue.js</span>
+        </div>
+        <div class="chip framework" data-type="framework" data-vis="true">
+          <img src="static/images/angular.svg" alt="AngularJS"><span>AngularJS</span>
+        </div>
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/node-dot-js.svg" alt="Node.js"><span>Node.js</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/webpack.svg" alt="Webpack"><span>Webpack</span>
+        </div>
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/html5.svg" alt="HTML5"><span>HTML5</span>
+        </div>
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/css3.svg" alt="CSS3"><span>CSS3</span>
+        </div>
+        <div class="chip framework" data-type="framework" data-vis="true">
+          <img src="static/images/sass.svg" alt="SASS"><span>SASS</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/gulp.svg" alt="Gulp"><span>Gulp</span>
+        </div>
+        <div class="chip framework" data-type="framework" data-vis="true">
+          <img src="static/images/wordpress.svg" alt="WP"><span>Wordpress</span>
+        </div>
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/php.svg" alt="PHP"><span>PHP</span>
+        </div>
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/python.svg" alt="Python"><span>Python</span>
+        </div>
+        <div class="chip language" data-type="language" data-vis="true">
+          <img src="static/images/mysql.svg" alt="MySQL"><span>MySQL</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/linux.svg" alt="Linux"><span>Linux</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/nginx.svg" alt="NGINX"><span>NGINX</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/git.svg" alt="Git"><span>Git</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/jira.svg" alt="Jira"><span>Jira</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/bitbucket.svg" alt="Bitbucket"><span>Bitbucket</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/visualstudiocode.svg" alt="VS Code"><span>VS Code</span>
+        </div>
+        <div class="chip tool" data-type="tool" data-vis="true">
+          <img src="static/images/adobephotoshop.svg" alt="Photoshop"><span>Photoshop</span>
+        </div>
+      </div>
+    </section>
+    <section id="work">
+      <h3>Work</h3>
+      <p>Coming soon...</p>
+    </section>
+    <footer>
+      <ul>
+        <li>
+          <a href="mailto:mjohnston89@gmail.com" rel="noopener" target="_blank" title="Gmail">
+            <svg role="img" alt="Gmail" title="Gmail" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/mjohnston89" rel="noopener" target="_blank" title="LinkedIn">
+            <svg role="img" alt="LinkedIn" title="LinkedIn" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </li>
+      </ul>
+      <p>&copy; 2018 Mark Johnston</p>
+    </footer>
+  </body>
+</html>
