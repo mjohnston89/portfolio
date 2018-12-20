@@ -1,3 +1,4 @@
+const theConfig = require('./env.json');
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -51,11 +52,6 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, './src/index.html'),
-      inject: true
-    }),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true
@@ -90,6 +86,13 @@ module.exports = (env, argv) => {
     filename: isDev ? 'style.css' : 'style.[hash].css',
     chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
     minimize: !isDev
+  }))
+  config.plugins.push(new HtmlWebpackPlugin({
+    filename: 'index.html',
+    template: path.resolve(__dirname, './src/index.html'),
+    inject: true,
+    mode: argv.mode,
+    ga: theConfig.ga
   }))
   if (isDev) {
     // Dev Server
