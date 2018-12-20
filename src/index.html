@@ -131,6 +131,15 @@
     <meta name="msapplication-TileColor" content="#41ead4">
     <meta name="msapplication-config" content="/static/images/browserconfig.xml">
     <meta name="theme-color" content="#41ead4">
+    <% if (htmlWebpackPlugin.options.mode === 'production') { %>
+      <script async src="https://www.google-analytics.com/analytics.js"></script>
+      <script>
+        window.ga = window.ga || ((...args) => (ga.q = ga.q || []).push(args));
+        ga('create', '<%= htmlWebpackPlugin.options.ga %>', 'auto');
+        ga('set', 'transport', 'beacon');
+        ga('send', 'pageview');
+      </script>
+    <% } %>
   </head>
   <body>
     <section id="intro">
